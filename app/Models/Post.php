@@ -58,17 +58,11 @@ class Post extends Model
         }
         return asset("upload/{$this->thumbnail}");
     }
- /*   public function delImage()
+
+
+    public function getPostDate()
     {
-        if ($this->thumbnail) {
-            Storage::delete($this->thumbnail);
-
-        }
-        return null;
-    }*/
-
-    public function getPostDate(){
-        return Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at)->format('d F,Y');
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F,Y');
     }
 
 }

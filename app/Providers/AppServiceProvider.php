@@ -38,7 +38,25 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.sidebar', function ($view) {
             $view->with('popular_posts', Post::orderBy('view', 'desc')->limit(5)->get());
+
         });
+
+        if (Cache::has('news_post')) {
+            $news_post = Cache::get('news_post');
+        } else {
+            $news_post = Post::orderBy('id', 'desc')->limit(5)->get();
+            Cache::put('news_post', $news_post, 300);
+        }
+        View::share('news_post', $news_post);
+
+        if (Cache::has('popular_post')) {
+            $popular_post = Cache::get('popular_post');
+        } else {
+            $popular_post = Post::orderBy('view', 'desc')->limit(5)->get();
+            Cache::put('popular_post', $popular_post, 300);
+        }
+        View::share('popular_post', $popular_post);
+
     }
 }
 

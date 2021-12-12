@@ -35,8 +35,10 @@
                         border: 2px solid red;
                     }
                 </style>
+
             </div>
         </nav>
 
     </div><!-- end container-fluid -->
+
 </header>

@@ -7,6 +7,7 @@
 
 
 @section('content')
+
     <div class="page-wrapper">
         <div class="blog-custom-build">
             @foreach($posts as $post)
