@@ -21,9 +21,7 @@
                                href="{{route('categories.single',$category->slug)}}">{{$category->title}}</a>
                         </li>
                     @endforeach
-                    <li class="nav-item">
-                        <a class="nav-link" href="marketing-contact.html">Contact Us</a>
-                    </li>
+
                 </ul>
                 <form class="form-inline" method="get" action="{{url('search')}}">
                     <input name="s" class="form-control mr-sm-2  @error('s') is-invalid @enderror" type="text"
