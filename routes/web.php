@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tag', 'TagController');
     Route::resource('/posts', 'PostController');
+    Route::resource('/subscribers', 'SubscribersController');
     Route::get('/posts/{post}','PostController@delImage')->name('delete');
 });
 

@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                        <li class="breadcrumb-item active">Edit post</li>
                     </ol>
                 </div>
             </div>
@@ -79,8 +79,9 @@
 
                                         <div class="mt-5"><img src="{{$post->getImage()}}" width="175" alt=""></div>
                                         @if($post->thumbnail)
-                                        <a  class="btn btn-primary mt-2" href="{{ route('delete',$post->id) }}">Удалить изображение</a>
-                                            @endif
+                                            <a class="btn btn-primary mt-2" href="{{ route('delete',$post->id) }}">Удалить
+                                                изображение</a>
+                                        @endif
                                     </div>
 
                                 </div>

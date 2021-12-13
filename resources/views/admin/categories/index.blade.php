@@ -11,8 +11,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                            <li class="breadcrumb-item active">Category</li>
                         </ol>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                                 @endif
                             </div>
                                     <!-- /.card-body -->
-                            <div class="card-footer clearfix">
+                            <div >
                                 {{ $categories->links("pagination::bootstrap-4") }}
                             </div>
                         </div>

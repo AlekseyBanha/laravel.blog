@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Статьи</h1>
+                    <h1>Главная</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Posts</li>
+                        <li class="breadcrumb-item active">Subscribers</li>
                     </ol>
                 </div>
             </div>
@@ -26,42 +26,32 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Список статей</h3>
+                            <h3 class="card-title">Список подписчиков</h3>
                         </div>
 
-                        <!-- Default box -->
-                        <div class="card-body">
-                            <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Добавить статью</a>
 
-                            @if (count($posts))
+
+                            @if (count($subscribers))
                                 <div class="table-responsive">
 
                                     <table class="table table-bordered table-hover text-nowrap">
                                         <thead>
                                         <tr>
                                             <th style="width: 30px">#</th>
-                                            <th>Наименование</th>
-                                            <th>Категория</th>
-                                            <th>Теги</th>
-                                            <th>Дата</th>
+                                            <th>Email</th>
+
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($posts as $post)
+                                        @foreach($subscribers as $subscriber)
                                             <tr>
-                                                <td>{{$post->id}}</td>
-                                                <td>{{$post->title}}</td>
-                                                <td>{{$post->category->title}}</td>
-                                                <td>{{$post->tags->pluck('title')->join(',')}}</td>
-                                                <td>{{$post->created_at}}</td>
+                                                <td>{{$subscriber->id}}</td>
+                                                <td>{{$subscriber->email}}</td>
                                                 <td>
-                                                    <a href="{{ route('posts.edit',$post->id) }}"
-                                                       class="btn btn-info btn-sm float-left mr-1">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                    <form action="{{route('posts.destroy',$post->id)}}"
-                                                          method="post" class="float-left">
+
+
+                                                    <form action="{{route('subscribers.destroy',$subscriber->id)}}" method="post" class="float-left">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
@@ -69,6 +59,7 @@
                                                             <i
                                                                 class="fas fa-trash-alt"></i>
                                                         </button>
+
                                                     </form>
                                                 </td>
                                             </tr>
@@ -77,12 +68,12 @@
                                     </table>
                                 </div>
                             @else
-                                <p>Статей пока нет...</p>
+                                <p>Подписиков пока нет...</p>
                             @endif
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer clearfix">
-                            {{ $posts->links("pagination::bootstrap-4") }}
+                        <div >
+                            {{ $subscribers->links("pagination::bootstrap-4") }}
                         </div>
                     </div>
                     <!-- /.card -->
