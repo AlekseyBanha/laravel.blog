@@ -90,8 +90,8 @@
                                     <div class="media-body">
                                         <h4 class="media-heading user_name">{{$comment->Name}}
                                             <small>{{$comment->email}}</small>
-                                            <small>{{$comment->created_at}}</small></h4>
-                                        <p>{{$comment->text}}</p>
+                                            <small>{{$comment->getPostDate()}}</small></h4>
+                                        <p>{!! $comment->text !!}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -104,13 +104,14 @@
             <div class="custombox clearfix">
                 <h4 class="small-title">Leave a Reply</h4>
                 <div class="row">
-                  @if(Auth::user())
+                    @if(Auth::user())
                         <div class="col-lg-12">
                             <form class="form-wrapper" method="post" action="{{route('comment')}}">
                                 @csrf
                                 <input hidden name="post_id" value="{{$post->id}}">
-                                <textarea name="text" class="form-control" placeholder="Your comment"></textarea>
-                                <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                <textarea  name="text" rows="5" id="text" class="form-control"
+                                          placeholder="Your comment"></textarea>
+                                <button type="submit" class="btn btn-primary mt-2">Submit Comment</button>
                             </form>
                         </div>
                     @else To send a comment you need to  <h3><a href="{{route('register.create')}}">log</a></h3>  in.
@@ -120,6 +121,14 @@
             </div>
         </div><!-- end page-wrapper -->
 
-
+        <script src="{{asset('/assets/admin/ckeditor5/build/ckeditor.js')}}"></script>
+        <script src="{{asset('/assets/admin/ckfinder/ckfinder/ckfinder.js')}}"></script>
+        <script> ClassicEditor
+                .create(document.querySelector('#text'), {
+                    toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });</script>
 
 @endsection
