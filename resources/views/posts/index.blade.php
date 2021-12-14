@@ -42,6 +42,7 @@
                                   title="">{{$post->category->title}}</a></small>
                         <small>{{$post->getPostDate()}}</small>
                         <small><i class="fa fa-eye"></i> {{$post->view}}</small>
+
                     </div><!-- end meta -->
                 </div><!-- end blog-box -->
 

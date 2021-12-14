@@ -15,7 +15,7 @@
                         @csrf
                         <input type="text" name="email" placeholder="Add your email here.." required
                                class="form-control"/>
-                        <input type="submit" class="btn btn-default btn-block"/>
+                        <button type="submit" class="btn btn-default btn-block">Subscribe</button>
                         @if(session('success'))
                             <div class=" mt-2 alert-success">
                                 {{session('success')}}

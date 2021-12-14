@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -41,7 +42,7 @@ class UserController extends Controller
             session()->flash('success', 'Вы авторизованы');
             if (Auth::user()->is_admin) {
                 return redirect()->route('admin.index');
-            } else {
+            } else { $link = Session::get('url');
                 return redirect()->home();
             }
         }

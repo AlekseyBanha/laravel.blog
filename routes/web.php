@@ -19,7 +19,7 @@ Route::get('/category/{slug}','CategoryController@show' )->name('categories.sing
 Route::get('/tag/{slug}','TagController@show' )->name('tags.single');
 Route::get('/search','SearchController@index')->name('search');
 Route::post('/subscribe','SendController@index')->name('subsc');
-
+Route::post('/commet','CommentController@index')->name('comment');
 
 
 
