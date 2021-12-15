@@ -52,7 +52,7 @@
                                                 <td>{{$comment->id}}</td>
                                                 <td>{{$comment->email}}</td>
                                                 <td>{{$comment->Name}}</td>
-                                                <td>{{$comment->text}}</td>
+                                                <td>{!! $comment->text !!}</td>
                                                 <td>{{$comment->post_id}}</td>
                                                 <td>
 

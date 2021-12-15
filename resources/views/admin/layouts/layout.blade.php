@@ -44,7 +44,7 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Aleksey Banha</a>
+                    <a href="https://www.linkedin.com/in/oleksii-banha-466379227/" target="_blank" class="d-block">Aleksey Banha</a>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
+            <b>Blog</b>
         </div>
 
     </footer>

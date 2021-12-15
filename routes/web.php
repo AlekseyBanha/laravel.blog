@@ -13,18 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','PostController@index' )->name('home');
-Route::get('/article/{slug}','PostController@show' )->name('posts.single');
-Route::get('/category/{slug}','CategoryController@show' )->name('categories.single');
-Route::get('/tag/{slug}','TagController@show' )->name('tags.single');
-Route::get('/search','SearchController@index')->name('search');
-Route::post('/subscribe','SendController@index')->name('subsc');
-Route::post('/commet','CommentController@index')->name('comment');
-
-
-
-
-
+Route::get('/', 'PostController@index')->name('home');
+Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
+Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
+Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
+Route::get('/search', 'SearchController@index')->name('search');
+Route::post('/subscribe', 'SendController@index')->name('subsc');
+Route::post('/commet', 'CommentController@index')->name('comment');
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
@@ -34,7 +29,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::resource('/posts', 'PostController');
     Route::resource('/subscribers', 'SubscribersController');
     Route::resource('/comments', 'CommentsController');
-    Route::get('/posts/{post}','PostController@delImage')->name('delete');
+    Route::get('/posts/{post}', 'PostController@delImage')->name('delete');
 });
 
 Route::group(['middleware' => 'guest'], function () {

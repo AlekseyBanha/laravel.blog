@@ -15,7 +15,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <b>Регистрация</b>
+        <b>Registration</b>
     </div>
 
     <div class="card">
@@ -33,7 +33,7 @@
             <form action="{{route('register.store')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Имя" value="{{old('name')}}">
+                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{old('name')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Пароль">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -61,7 +61,7 @@
 
                 <div class="input-group mb-3">
                     <input type="password" name="password_confirmation" class="form-control"
-                           placeholder="Повторите пароль">
+                           placeholder="Repeat password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -70,13 +70,13 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-4 offset-7">
-                    <button type="submit" class="btn btn-primary">Регистрация</button>
+                    <button type="submit" class="btn btn-primary">Registration</button>
                 </div>
                 <!-- /.col -->
 
             </form>
 
-            <a href="{{route('login.create')}}" class="text-center">Я уже зарегестрирован</a>
+
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

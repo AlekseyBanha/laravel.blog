@@ -14,8 +14,9 @@ class PostController extends Controller
     public function index()
     {
 
-            $posts = Post::with('category')->orderBy('id', 'desc')->paginate(2);
-            return view('posts.index', compact('posts'));
+
+        $posts = Post::with('category')->orderBy('id', 'desc')->paginate(2);
+        return view('posts.index', compact('posts'));
 
 
     }
@@ -25,7 +26,7 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->with('comments')->firstOrFail();
         $post->view += 1;
         $post->update();
-     /*   $url = $_SERVER['REQUEST_URI'];*/
-        return view('posts.show', compact('post'))/*->with(Session::push(['url'=>$url]))*/;
+        /*   $url = $_SERVER['REQUEST_URI'];*/
+        return view('posts.show', compact('post'))/*->with(Session::push(['url'=>$url]))*/ ;
     }
 }

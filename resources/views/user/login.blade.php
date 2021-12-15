@@ -15,7 +15,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <b>Авторизация</b>
+        <b>Authorization</b>
     </div>
 
     <div class="card">
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Пароль">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -61,13 +61,13 @@
 
                 <!-- /.col -->
                 <div class="col-4 offset-9">
-                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                 </div>
                 <!-- /.col -->
 
             </form>
 
-            <a href="{{route('register.create')}}" class="text-center">Зарегестрироваться</a>
+            <a href="{{route('register.create')}}" class="text-center">I am not registered</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

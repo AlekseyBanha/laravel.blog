@@ -21,8 +21,13 @@
                                href="{{route('categories.single',$category->slug)}}">{{$category->title}}</a>
                         </li>
                     @endforeach
-
+                    @if(Auth::user())<p class="authCheck"><a href="{{route('logout')}}">Online</a> <i
+                            class="fa fa-cloud"> </i></p>
+                    @else
+                        <p class="authCheck"><a href="{{route('login')}}">Offline</a> <i class="fa fa-cloud"> </i></p>
+                    @endif
                 </ul>
+
                 <form class="form-inline" method="get" action="{{url('search')}}">
                     <input name="s" class="form-control mr-sm-2  @error('s') is-invalid @enderror" type="text"
                            placeholder="How may I help?" required>

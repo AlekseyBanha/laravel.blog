@@ -98,7 +98,11 @@ h6 {
     line-height: 24px;
     margin-bottom: 11px
 }
-
+.authCheck{
+    position: absolute;
+    left: 1405px;
+    bottom:5px;
+}
 a {
     color: #111111;
 }

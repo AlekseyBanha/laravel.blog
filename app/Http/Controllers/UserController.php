@@ -24,7 +24,7 @@ class UserController extends Controller
         ]);
         session()->flash('success', 'Регистрация пройдена');
         Auth::login($user);
-        return redirect()->home();
+        return redirect()->back();
     }
 
     public function loginForm()
@@ -42,16 +42,17 @@ class UserController extends Controller
             session()->flash('success', 'Вы авторизованы');
             if (Auth::user()->is_admin) {
                 return redirect()->route('admin.index');
-            } else { $link = Session::get('url');
-                return redirect()->home();
+            } else {
+
+                return redirect()->back();
             }
         }
-        return redirect()->back()->with('error','Неравильный логин или пароль');
+        return redirect()->back()->with('error', 'Неравильный логин или пароль');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login.create');
+        return redirect()->back();
     }
 }

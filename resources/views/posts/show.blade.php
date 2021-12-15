@@ -3,6 +3,8 @@
 @section('title','Markedia ::' . $post->title)
 
 @section('content')
+
+
     <div class="page-wrapper">
         <div class="blog-title-area">
             <ol class="breadcrumb hidden-xs-down">
@@ -104,22 +106,110 @@
             <div class="custombox clearfix">
                 <h4 class="small-title">Leave a Reply</h4>
                 <div class="row">
+
                     @if(Auth::user())
                         <div class="col-lg-12">
                             <form class="form-wrapper" method="post" action="{{route('comment')}}">
                                 @csrf
                                 <input hidden name="post_id" value="{{$post->id}}">
-                                <textarea  name="text" rows="5" id="text" class="form-control"
+                                <textarea name="text" rows="5" id="text" class="form-control"
                                           placeholder="Your comment"></textarea>
                                 <button type="submit" class="btn btn-primary mt-2">Submit Comment</button>
                             </form>
                         </div>
-                    @else To send a comment you need to  <h3><a href="{{route('register.create')}}">log</a></h3>  in.
+                    @else
+                        <h5 class="mt-2 offset-lg-2 p-2">To leave a comment you need to log in</h5>
+
+                        <div class="container"> @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="list-unstyled">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if(session()->has('error'))
+                                <div class="alert alert-danger">
+                                    {{session('error')}}
+                                </div>
+                            @endif
+
+                            <form action="{{route('login')}}" method="post">
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                           value="{{old('email')}}">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 offset-9">
+                                    <button type="submit" class="btn btn-primary mt-2">Login</button>
+                                </div>
+
+                            </form>
+                            <div class="col-4">
+                                <button type="submit" onclick="disp(document.getElementById('form1'))"
+                                        class="btn btn-primary mt-2">I am not registered
+                                </button>
+                            </div>
+
+                            <form action="{{route('register.store')}}" class="mt-2" id="form1" style="display: none;"
+                                  method="post">
+                                @csrf
+                                <h6 class="mt-2 offset-lg-2 p-2">Enter your registration data</h6>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Name"
+                                           value="{{old('name')}}">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                           value="{{old('email')}}">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="password" name="password_confirmation" class="form-control"
+                                           placeholder="Repeat password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 offset-7">
+                                    <button type="submit" class="btn btn-primary">Registration</button>
+                                </div>
+                            </form>
+                        </div>
                     @endif
                 </div>
 
             </div>
-        </div><!-- end page-wrapper -->
+        </div>
 
         <script src="{{asset('/assets/admin/ckeditor5/build/ckeditor.js')}}"></script>
         <script src="{{asset('/assets/admin/ckfinder/ckfinder/ckfinder.js')}}"></script>
@@ -130,5 +220,13 @@
                 .catch(function (error) {
                     console.error(error);
                 });</script>
-
+        <script>
+            function disp(form) {
+                if (form.style.display == "none") {
+                    form.style.display = "block";
+                } else {
+                    form.style.display = "none";
+                }
+            }
+        </script>
 @endsection

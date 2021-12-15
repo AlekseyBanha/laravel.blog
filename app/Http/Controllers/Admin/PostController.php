@@ -6,6 +6,7 @@ use App\Http\Requests\StorePost;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -109,7 +110,6 @@ class PostController extends Controller
         $post =Post::find($id);
         $post->tags()->sync([]);
         Storage::delete($post->thumbnail);
-        $post->delete();
         return redirect()->route('posts.index')->with('success', 'Статья удалена');;
     }
 
