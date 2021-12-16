@@ -23,7 +23,7 @@
                     @endforeach
                     @if(Auth::user())
 
-                                <a class="nav-link forLog" href="{{route('logout')}}">{{\Illuminate\Support\Facades\Auth::user()->email}} <i class="fa fa-cloud"> </i></a>
+                                <a class="nav-link forLog" href="{{route('logout')}}">{{\Illuminate\Support\Facades\Auth::user()->name}} <i class="fa fa-cloud"> </i></a>
 
                     @else
                         <li class="nav-item">
