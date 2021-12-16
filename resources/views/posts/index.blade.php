@@ -49,8 +49,7 @@
                                                     class="down-mobile">  Email</span></button>
                                         </form>
                                     </li>
-                                    {{--<li><a href="{{route('mail')}}" class="gp-button btn btn-primary"><i
-                                                class="fa fa-google-plus"></i><span class="down-mobile">Twitter</span></a></li>--}}
+
                                 </ul>                    @endauth
 
                             </div>

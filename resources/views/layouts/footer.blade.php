@@ -21,7 +21,6 @@
                             @endif
 
 
-
                         </div>
                     </div><!-- end blog-list -->
                 </div><!-- end widget -->
@@ -71,7 +70,9 @@
             <div class="col-md-12 text-center">
                 <br>
                 <br>
-                <div class="copyright">&copy; Markedia. Design: <a href="https://www.linkedin.com/in/oleksii-banha-466379227/" target="_blank">Aleksey Banha</a>.</div>
+                <div class="copyright">&copy; Markedia. Design: <a
+                        href="https://www.linkedin.com/in/oleksii-banha-466379227/" target="_blank">Aleksey Banha</a>.
+                </div>
             </div>
         </div>
     </div><!-- end container -->

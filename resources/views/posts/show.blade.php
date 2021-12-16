@@ -25,14 +25,38 @@
             </div><!-- end meta -->
 
             <div class="post-sharing">
-                <ul class="list-inline">
-                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span
-                                class="down-mobile">Share on Facebook</span></a></li>
-                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span
-                                class="down-mobile">Tweet on Twitter</span></a></li>
-                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-            </div><!-- end post-sharing -->
+                @auth()
+
+                    <ul class="list-inline">
+                        <li><a href="https://uk-ua.facebook.com/" target="_blank"
+                               class="fb-button btn btn-primary"><i
+                                    class="fa fa-facebook"></i> <span
+                                    class="down-mobile">Share on Facebook</span></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank"
+                               class="tw-button btn btn-primary"><i
+                                    class="fa fa-twitter"></i> <span
+                                    class="down-mobile">Tweet on Twitter</span></a>
+                        </li>
+
+                        <li>
+                            <form action="{{route('mail')}}" method="post">
+                                @csrf
+                                <input hidden name="slug" value="{{$post->slug}}">
+                                <button onclick="myFunction()" class=" sec gp-button btn btn-primary"
+                                        type="submit">
+                                    <div class="repair1"><i
+                                            class="fa fa-google-plus"></i><span
+                                            class="down-mobile">  Email</span></div>
+                                </button>
+                            </form>
+                        </li>
+
+                    </ul>
+                @endauth
+
+            </div>
         </div><!-- end title -->
 
         <div class="single-post-media">
@@ -56,21 +80,44 @@
                 </div><!-- end meta -->
 
                 <div class="post-sharing">
-                    <ul class="list-inline">
-                        <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span
-                                    class="down-mobile">Share on Facebook</span></a></li>
-                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span
-                                    class="down-mobile">Tweet on Twitter</span></a></li>
-                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div><!-- end post-sharing -->
+                    @auth()
+
+                        <ul class="list-inline">
+                            <li><a href="https://uk-ua.facebook.com/" target="_blank"
+                                   class="fb-button btn btn-primary"><i
+                                        class="fa fa-facebook"></i> <span
+                                        class="down-mobile">Share on Facebook</span></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/" target="_blank"
+                                   class="tw-button btn btn-primary"><i
+                                        class="fa fa-twitter"></i> <span
+                                        class="down-mobile">Tweet on Twitter</span></a>
+                            </li>
+
+                            <li>
+                                <form action="{{route('mail')}}" method="post">
+                                    @csrf
+                                    <input hidden name="slug" value="{{$post->slug}}">
+                                    <button onclick="myFunction()" class=" sec gp-button btn btn-primary"
+                                            type="submit">
+                                        <div class="repair1"><i
+                                                class="fa fa-google-plus"></i><span
+                                                class="down-mobile">  Email</span></div>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    @endauth
+
+                </div>
             </div><!-- end title -->
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-spot clearfix">
                         <div class="banner-img">
-                            <img src="upload/banner_01.jpg" alt="" class="img-fluid">
+                            <img src="{{ asset("/markedia/images/footer.png")}}" alt="" class="img-fluid">
                         </div><!-- end banner-img -->
                     </div><!-- end banner -->
                 </div><!-- end col -->
@@ -283,4 +330,10 @@
                 }
             }
         </script>
+        <script>
+            function myFunction() {
+                alert("The post has been sent to your mail");
+            }
+        </script>
+
 @endsection

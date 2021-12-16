@@ -99,6 +99,22 @@ h5 {
     font-size: 30px;
 
 }
+.repair1 {
+    position: absolute;
+    bottom: 4px;
+    left: 465px;
+}
+.forLog{
+background-color:#F9CA27;
+border: yellow;
+    position: absolute;
+    left: 1219px;
+    bottom: 10px;
+}
+.sec {
+    width: 200px;
+    height: 43px;
+}
 h6 {
     font-size: 16px;
     line-height: 24px;
