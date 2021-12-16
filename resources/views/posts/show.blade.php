@@ -306,7 +306,7 @@
                         console.log(newMedia)
                         console.log(data)
                         newMedia.find(".element-name-text").text(data.text);
-                        newMedia.find(".element-name-name").text(data.name);
+                        newMedia.find(".element-name-media").text(data.name);
                         newMedia.find(".element-name-email").text(data.email);
                         newMedia.find(".element-name-date").text(data.date);
                     }
