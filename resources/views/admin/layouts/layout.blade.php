@@ -44,7 +44,8 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="https://www.linkedin.com/in/oleksii-banha-466379227/" target="_blank" class="d-block">Aleksey Banha</a>
+                    <a href="https://www.linkedin.com/in/oleksii-banha-466379227/" target="_blank" class="d-block">Aleksey
+                        Banha</a>
                 </div>
             </div>
 
@@ -186,40 +187,8 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <div class="container mt-2">
-            <div class="row">
-                <div class="col-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="list-unstyled">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    @if (session()->has('success'))
-                        <div class="alert alert-success">
-                            <ul class="list-unstyled">
-                                {{session('success')}}
-                            </ul>
-                        </div>
-                    @endif
-                        @if (session()->has('danger'))
-                            <div class="alert alert-danger">
-                                <ul class="list-unstyled">
-                                    {{session('danger')}}
-                                </ul>
-                            </div>
-                        @endif
-                </div>
-            </div>
-        </div>
-        @yield('content')
-    </div>
-    <!-- /.content-wrapper -->
+@include('admin.layouts.errors')
+<!-- /.content-wrapper -->
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

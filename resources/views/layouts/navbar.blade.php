@@ -21,10 +21,14 @@
                                href="{{route('categories.single',$category->slug)}}">{{$category->title}}</a>
                         </li>
                     @endforeach
-                    @if(Auth::user())<p class="authCheck"><a href="{{route('logout')}}">Online</a> <i
-                            class="fa fa-cloud"> </i></p>
+                    @if(Auth::user())
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{route('logout')}}">{{\Illuminate\Support\Facades\Auth::user()->email}} <i class="fa fa-cloud"> </i></a>
+                        </li>
                     @else
-                        <p class="authCheck"><a href="{{route('login')}}">Offline</a> <i class="fa fa-cloud"> </i></p>
+                        <li class="nav-item">
+                            <a  class="nav-link" href="{{route('login')}}">Login <i class="fa fa-cloud"> </i></a>
+                        </li>
                     @endif
                 </ul>
 

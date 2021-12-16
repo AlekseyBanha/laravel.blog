@@ -52,7 +52,6 @@
                         @foreach($post->tags as $tag)
                             <small><a href="{{route('tags.single',$tag->slug)}}" title="">{{$tag->title}}</a></small>
                         @endforeach @else Post has no tags
-
                     @endif
                 </div><!-- end meta -->
 
@@ -85,22 +84,39 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="comments-list ">
-                            @foreach($post->comments as $comment)
-
+                            @foreach($pagine as $comment)
                                 <div class="media ">
-
                                     <div class="media-body">
-                                        <h4 class="media-heading user_name">{{$comment->Name}}
-                                            <small>{{$comment->email}}</small>
-                                            <small>{{$comment->getPostDate()}}</small></h4>
-                                        <p>{!! $comment->text !!}</p>
+                                        <h4 class="media-heading user_name">
+                                            <strong class="element-name-media">
+                                                {{$comment->Name}}
+                                            </strong>
+                                            <small class="element-name-email">
+                                                {{$comment->email}}
+                                            </small>
+                                            <small class="element-name-date">
+                                                {{$comment->getPostDate()}}
+                                            </small></h4>
+                                        <p class="element-name-text"><strong>Message:</strong> {!! $comment->text !!}
+                                        </p>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        <div class="align-content-center col-md-12">
+                            <nav aria-label="Page navigation" class="pagination  pagination-sm">
+                                {{$pagine->links("pagination::bootstrap-4")}}
+                            </nav>
+                        </div>
+
                     </div><!-- end col -->
                 </div><!-- end row -->
+
             </div><!-- end custom-box -->
+
+            <div class="row">
+                <!-- end col -->
+            </div>
             <hr class="invis1">
 
             <div class="custombox clearfix">
@@ -109,12 +125,12 @@
 
                     @if(Auth::user())
                         <div class="col-lg-12">
-                            <form class="form-wrapper" method="post" action="{{route('comment')}}">
+                            <form class="form-wrapper" id="message">
                                 @csrf
                                 <input hidden name="post_id" value="{{$post->id}}">
                                 <textarea name="text" rows="5" id="text" class="form-control"
                                           placeholder="Your comment"></textarea>
-                                <button type="submit" class="btn btn-primary mt-2">Submit Comment</button>
+                                <button type="submit" id="save" class="btn btn-primary mt-2">Submit Comment</button>
                             </form>
                         </div>
                     @else
@@ -210,9 +226,47 @@
 
             </div>
         </div>
+        <div class="media media-for-clone " hidden>
+            <div class="media-body">
+                <h4 class="media-heading user_name">
+                    <strong class="element-name-media">
+                    </strong>
+                    <small class="element-name-email">
+                    </small>
+                    <small class="element-name-date">
+                    </small></h4>
+                <p class="element-name-text"></p>
+            </div>
+        </div>
+        {{--    <script src="{{asset('/assets/admin/ckeditor5/build/ckeditor.js')}}"></script>
+            <script src="{{asset('/assets/admin/ckfinder/ckfinder/ckfinder.js')}}"></script>--}}
+        <script src="{{ asset("/assets/admin/plugins/jquery/jquery.min.js") }}"></script>
+        <script>
+            $('#message').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                    url: '{{route('comment')}}',
+                    type: 'post',
+                    data: $('#message').serialize(),
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        var newMedia = $(".media-for-clone").last().clone();
+                        newMedia.removeAttr('hidden');
+                        newMedia.appendTo(".comments-list");
+                        console.log(newMedia)
+                        console.log(data)
+                        newMedia.find(".element-name-text").text(data.text);
+                        newMedia.find(".element-name-name").text(data.name);
+                        newMedia.find(".element-name-email").text(data.email);
+                        newMedia.find(".element-name-date").text(data.date);
+                    }
+                });
+            });
+        </script>
 
-        <script src="{{asset('/assets/admin/ckeditor5/build/ckeditor.js')}}"></script>
-        <script src="{{asset('/assets/admin/ckfinder/ckfinder/ckfinder.js')}}"></script>
         <script> ClassicEditor
                 .create(document.querySelector('#text'), {
                     toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo']

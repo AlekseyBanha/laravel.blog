@@ -12,15 +12,22 @@ use Illuminate\Support\Facades\View;
 
 class CommentController extends Controller
 {
-    public function index(StoreComment $request)
+    public function index(Request $request)
     {
-        Comment::create([
+
+        $comment = Comment::create([
             'Name' => auth()->user()->name,
             'email' => auth()->user()->email,
             'text' => $request->text,
             'post_id' => $request->post_id,
         ]);
-        return redirect()->back();
+        return json_encode([
+           'name' => $comment->Name,
+           'text' => $comment->text,
+           'email' => $comment->email,
+           'created_at' => $comment->date,
+        ]);
+
     }
 
 

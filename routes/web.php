@@ -20,6 +20,8 @@ Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/subscribe', 'SendController@index')->name('subsc');
 Route::post('/commet', 'CommentController@index')->name('comment');
+Route::post( '/mailsend', 'SendController@sendMessageMail')->name('mail');
+
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {

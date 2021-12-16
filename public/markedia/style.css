@@ -92,16 +92,20 @@ h5 {
     line-height: 25px;
     margin-bottom: 11px
 }
+.linkLog:hover{
+    border: 3px groove #318CE7;
+    color: green;
+    font-style: oblique;
+    font-size: 30px;
 
+}
 h6 {
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 11px
 }
 .authCheck{
-    position: absolute;
-    left: 1405px;
-    bottom:5px;
+
 }
 a {
     color: #111111;

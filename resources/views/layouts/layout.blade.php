@@ -10,6 +10,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="_token" content="{!! csrf_token() !!}" />
 
 <link rel="shortcut icon" href="{{ asset("/markedia/images/favicon.ico") }}" type="image/x-icon"/>
 <link rel="apple-touch-icon" href="{{ asset("/markedia/images/apple-touch-icon.png") }}">
@@ -40,7 +41,7 @@
 
                     @yield('content')
                 </div>
-                <
+
 
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -50,6 +51,7 @@
     </section>
 
 @include('layouts.footer')
+    <script src="{{ asset("/assets/admin/plugins/jquery/jquery.min.js") }}"></script>
 
 </body>
 </html>

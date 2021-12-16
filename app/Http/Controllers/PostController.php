@@ -26,7 +26,8 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->with('comments')->firstOrFail();
         $post->view += 1;
         $post->update();
+        $pagine = $post->comments()->paginate(4);
         /*   $url = $_SERVER['REQUEST_URI'];*/
-        return view('posts.show', compact('post'))/*->with(Session::push(['url'=>$url]))*/ ;
+        return view('posts.show', compact('post','pagine' ));
     }
 }

@@ -47,6 +47,7 @@ class UserController extends Controller
                 return redirect()->back();
             }
         }
+
         return redirect()->back()->with('error', 'Неравильный логин или пароль');
     }
 
