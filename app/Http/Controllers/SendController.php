@@ -26,7 +26,7 @@ class SendController extends Controller
 
     }
     public function sendMessageMail(Request $request)
-    { dd(Auth::user()->email);
+    {
         $body = '<p>Hello:' . Auth::user()->name . '.</p><br>';
         $body .= 'The post you liked:';
         $body .= 'http://laravel.blog/article/' . $request->slug . '<br>';
