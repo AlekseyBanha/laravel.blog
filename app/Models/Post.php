@@ -3,15 +3,18 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\HasApiTokens;
 
 
 class Post extends Model
 {
-    use Sluggable;
+    use HasFactory,Sluggable,HasApiTokens;
+
 
     protected $fillable = ['title', 'description', 'content', 'category_id', 'thumbnail',];
 

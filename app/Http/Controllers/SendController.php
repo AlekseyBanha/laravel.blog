@@ -25,6 +25,7 @@ class SendController extends Controller
         return redirect()->route('home')->with('success', 'Subscribed');
 
     }
+
     public function sendMessageMail(Request $request)
     {
         $body = '<p>Hello:' . Auth::user()->name . '.</p><br>';
