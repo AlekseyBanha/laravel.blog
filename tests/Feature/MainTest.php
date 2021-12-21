@@ -18,7 +18,6 @@ class MainTest extends TestCase
      */
     /** @test */
     //Ability to view the main directory and display posts
-
     public function PostTest()
     {
         $response = $this->get('/');
@@ -76,9 +75,7 @@ class MainTest extends TestCase
     //Can a user subscribe to a blog
     public function CanUserSub()
     {
-        $user = \App\Models\User::factory()->create([
-            'email' => 'test@test'
-        ]);
+        $user = \App\Models\User::factory()->create();
 
         $response = $this->actingAs($user)
             ->withSession(['success' => 'Login'])
@@ -107,6 +104,8 @@ class MainTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSessionHasNoErrors();
+
+
     }
 
     /** @test */
