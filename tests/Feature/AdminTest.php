@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -80,7 +81,7 @@ class AdminTest extends TestCase
             ->get('/admin/categories');
 
         $response->assertStatus(200)
-            ->assertSee($category->name);
+            ->assertSee($category->title);
 
         $this->delete('admin/categories/' . $category->id);
 
@@ -88,7 +89,7 @@ class AdminTest extends TestCase
 
         $response->assertOk();
 
-        $response->assertDontSee($category->name);
+        $response->assertDontSee($category->title);
     }
 
     /** @test */
@@ -136,7 +137,7 @@ class AdminTest extends TestCase
             ->get('/admin/tag');
 
         $response->assertStatus(200)
-            ->assertSee($tag->name);
+            ->assertSee($tag->title);
 
         $this->delete('admin/tag/' . $tag->id);
 
@@ -144,7 +145,7 @@ class AdminTest extends TestCase
 
         $response->assertOk();
 
-        $response->assertDontSee($tag->name);
+        $response->assertDontSee($tag->title);
     }
 
     /** @test */
@@ -163,12 +164,11 @@ class AdminTest extends TestCase
         $response->assertSee('Create post');
 
         $response = $this->post('admin/posts/', [
+            'title' => 'exampl',
+            'description' => 'exampl',
+            'content' => 'exampl',
             'category_id' => '1',
-            'title' => 'ExampleTitle',
-            'description' => 'ExampleDes',
-            'content' => 'ExampleCon',
         ]);
-
 
         $response->assertStatus(302);
     }
@@ -188,7 +188,7 @@ class AdminTest extends TestCase
             ->get('/admin/posts');
 
         $response->assertStatus(200)
-            ->assertSee($post->name);
+            ->assertSee($post->title);
 
         $this->delete('admin/posts/' . $post->id);
 
@@ -196,7 +196,7 @@ class AdminTest extends TestCase
 
         $response->assertOk();
 
-        $response->assertDontSee($post->name);
+        $response->assertDontSee($post->title);
     }
 
 

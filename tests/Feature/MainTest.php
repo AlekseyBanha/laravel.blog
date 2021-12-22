@@ -20,11 +20,13 @@ class MainTest extends TestCase
     //Ability to view the main directory and display posts
     public function PostTest()
     {
+        $post = \App\Models\Post::factory()->create();
+
         $response = $this->get('/');
 
         $response->assertStatus(200);
 
-        $response->assertSee('Home');
+        $response->assertSee($post->title);
     }
 
 
@@ -32,33 +34,39 @@ class MainTest extends TestCase
     //Ability to view a single post
     public function PostSingle()
     {
-        $response = $this->get('/article/what-is-cryptocurrency-here-s-what-you-should-know');
+        $post = \App\Models\Post::factory()->create();
+
+        $response = $this->get('/article/' . $post->slug);
 
         $response->assertStatus(200);
 
-        $response->assertSee('post-media');
+        $response->assertSee($post->title);
 
     }
     /** @test */
     //Ability to view a category
     public function CategorySee()
     {
-        $response = $this->get('/category/technologies');
+        $category = \App\Models\Category::factory()->create();
+
+        $response = $this->get('/category/' . $category->slug);
 
         $response->assertStatus(200);
 
-        $response->assertSee('post-media');
+        $response->assertSee($category->title);
 
     }
     /** @test */
     //Ability to view a tag
     public function TagSee()
     {
-        $response = $this->get('/tag/seo-service');
+        $tag = \App\Models\Tag::factory()->create();
+
+        $response = $this->get('/tag/' . $tag->slug);
 
         $response->assertStatus(200);
 
-        $response->assertSee('post-media');
+        $response->assertSee($tag->title);
 
     }
     /** @test */
@@ -112,19 +120,20 @@ class MainTest extends TestCase
     //Whether a user can share the post
     public function CanUserSharePost()
     {
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Stepan',
-            'email' => 'user3@gmail.com']);
+        $post = \App\Models\Post::factory()->create();
+
+        $user = \App\Models\User::factory()->create();
+
         $response = $this->actingAs($user)
-            ->get('/article/what-is-cryptocurrency-here-s-what-you-should-know');
+            ->get('/article/' . $post->slug);
 
         $response->assertStatus(200);
 
         $response = $this->post('/mailsend', [
-            'slug' => 'what-is-cryptocurrency-here-s-what-you-should-know'
+            'slug' => $post->slug
         ]);
 
-        $response->assertRedirect('/article/what-is-cryptocurrency-here-s-what-you-should-know');
+        $response->assertRedirect('/article/' . $post->slug);
 
         $response->assertStatus(302);
 

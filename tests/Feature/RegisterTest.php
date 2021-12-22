@@ -14,7 +14,11 @@ class RegisterTest extends TestCase
 
     /** @test */
     public function test_guest_can_register()
-    {    $response = $this->get('/register');
+
+    {   $client = \App\Models\User::factory()->create();
+
+        $response = $this->get('/register');
+
         $response->assertStatus(200);
 
         $response = $this->post('/register',[
@@ -22,11 +26,11 @@ class RegisterTest extends TestCase
             'email'=>'test@mail.com',
             'password'=>'123456',
             'password_confirmation'=>'123456',
-
-
         ]);
 
         $response->assertStatus(302);
+
+        $this->assertAuthenticated();
 
     }
     /** @test */
@@ -36,14 +40,16 @@ class RegisterTest extends TestCase
 
         $response = $this->get('/login');
 
-        $response->assertOk(200);
+        $response->assertStatus(200);
 
         $response=$this->post('/login',[
             'email'=>$client->email,
             'password'=>$client->password,
         ]);
         $response->assertStatus(302);
-     
+
+
+
     }
 
 }
