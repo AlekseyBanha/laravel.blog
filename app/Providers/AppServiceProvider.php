@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::with('posts')->withCount('posts')->orderBy('posts_count', 'desc')->get();
             Cache::put('categories', $categories, 30);
         }
-        /*        $categories = Category::with('posts')->withCount('posts')->orderBy('posts_count','desc')->get();*/
         View::share('categories', $categories);
 
         view()->composer('layouts.sidebar', function ($view) {
