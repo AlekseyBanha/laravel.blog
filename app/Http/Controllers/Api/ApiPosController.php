@@ -38,7 +38,7 @@ class ApiPosController extends Controller
      */
     public function show($id)
     {
-        return new ApiPosResource(Post::with('category')->findOrFail($id));
+        return new ApiPosResource(Post::with('category','tags')->findOrFail($id));
 
     }
 

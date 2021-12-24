@@ -14,6 +14,7 @@ class ApiPosResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id'=>$this->id,
             'title'=>$this->title,
@@ -22,7 +23,8 @@ class ApiPosResource extends JsonResource
             'content'=>$this->content,
             'view'=>$this->view,
             'created_at'=>$this->created_at,
-            'category'=>$this->category->title
+            'category'=>$this->category->title,
+            'tags'=>$this->tags
         ];
     }
 }
