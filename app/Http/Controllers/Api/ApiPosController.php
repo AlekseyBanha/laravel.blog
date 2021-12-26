@@ -16,13 +16,15 @@ class ApiPosController extends Controller
      */
     public function index()
     {
-        return ApiPosResource::collection( Post::with('category')->orderBy('view', 'desc')->limit(5)->get());
+
+        return ApiPosResource::collection(Post::with('category')
+            ->orderBy('view', 'desc')->limit(5)->get());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -33,20 +35,19 @@ class ApiPosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return ApiPosResource
      */
     public function show($id)
     {
-        return new ApiPosResource(Post::with('category','tags')->findOrFail($id));
-
+        return new ApiPosResource(Post::with('category', 'tags')->findOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -57,7 +58,7 @@ class ApiPosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

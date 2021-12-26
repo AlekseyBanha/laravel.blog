@@ -23,8 +23,8 @@
                     </div>
                     <!-- end media -->
                     <div class="blog-meta big-meta text-center">
-                            <div class="post-sharing">
-                                @auth()
+                        <div class="post-sharing">
+                            @auth()
 
                                 <ul class="list-inline">
                                     <li><a href="https://uk-ua.facebook.com/" target="_blank"
@@ -52,8 +52,8 @@
 
                                 </ul>                    @endauth
 
-                            </div>
-                    <!-- end post-sharing -->
+                        </div>
+                        <!-- end post-sharing -->
                         <h4><a href="{{route('posts.single',[$post->slug])}}" title="">{{$post->title}}</a></h4>
                         <p>{!! $post->description!!}</p>
                         <small><a href="{{route('categories.single',$post->category->slug)}}"

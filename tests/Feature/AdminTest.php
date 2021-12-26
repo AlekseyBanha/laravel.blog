@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -60,16 +62,11 @@ class AdminTest extends TestCase
         $response = $this->get('/admin/categories');
 
         $response->assertSee('exampleCategory');
-
-
-        /*        $cat = \App\Models\Category::factory()->create();*/
-
     }
     /** @test */
     //Ability to delete a category by admin
     public function AdminDelCat()
     {
-
         $user = \App\Models\User::factory()->create([
             'is_admin' => '1',
         ]);
@@ -126,11 +123,11 @@ class AdminTest extends TestCase
     public function AdminDelTag()
     {
 
-        $user = \App\Models\User::factory()->create([
+        $user =  User::factory()->create([
             'is_admin' => '1',
         ]);
 
-        $tag = \App\Models\Tag::factory()->create();
+        $tag = Tag::factory()->create();
 
         $response = $this->actingAs($user)
             ->withSession(['success' => 'Login'])

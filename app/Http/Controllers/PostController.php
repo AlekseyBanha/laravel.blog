@@ -28,6 +28,6 @@ class PostController extends Controller
         $post->update();
         $pagine = $post->comments()->paginate(7);
         /*   $url = $_SERVER['REQUEST_URI'];*/
-        return view('posts.show', compact('post','pagine' ));
+        return view('posts.show', compact('post', 'pagine'));
     }
 }
