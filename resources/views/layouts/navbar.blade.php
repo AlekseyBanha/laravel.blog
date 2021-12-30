@@ -34,7 +34,8 @@
                 </ul>
 
                 <form class="form-inline" method="get" action="{{url('search')}}">
-                    <input name="s" class="form-control mr-sm-2  @error('s') is-invalid @enderror" type="text"
+                    <input name="s" @if(isset($_GET['s'])) value="{{$_GET['s']}}" @endif class="form-control mr-sm-2
+                    @error('s') is-invalid @enderror" type="text"
                            placeholder="How may I help?" required>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>

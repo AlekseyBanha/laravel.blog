@@ -57,7 +57,8 @@
                     <h2 class="widget-title">Popular Categories</h2>
                     <div class="link-widget">
                         <ul>@foreach($categories as $category)
-                                <li><a href="{{route('categories.single',$category->slug)}}">{{$category->title}} <span>({{count($category->posts)}})</span></a>
+                                <li><a href="{{route('categories.single',$category->slug)}}">{{$category->title}}
+                                        <span>({{count($category->posts)}})</span></a>
                                 </li>
                             @endforeach
                         </ul>

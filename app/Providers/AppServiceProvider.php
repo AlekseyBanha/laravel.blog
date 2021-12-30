@@ -30,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
         if (Cache::has('categories')) {
             $categories = Cache::get('categories');
         } else {
-            $categories = Category::with('posts')->withCount('posts')->orderBy('posts_count', 'desc')->get();
+            $categories = Category::with('posts')->withCount('posts')
+                ->orderBy('posts_count', 'desc')->get();
             Cache::put('categories', $categories, 30);
         }
         View::share('categories', $categories);
